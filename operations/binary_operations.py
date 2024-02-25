@@ -99,7 +99,10 @@ def signed_binary_to_decimal(binary):
     
     if sign_bit == 1:
         # Convert the decimal to its negative equivalent
-        decimal = -(sign_bit * 2 ** ((len(binary[0: binary.index('.')]) - 1))) + decimal
+        if '.' in binary:
+            decimal = -(sign_bit * 2 ** ((len(binary[0: binary.index('.')]) - 1))) + decimal
+        else:
+            decimal = -(sign_bit * 2 ** ((len(binary) - 1))) + decimal
     
     return decimal
 
